@@ -124,11 +124,11 @@ namespace Progetto_S1_L5
         public void Riepilogo()
         {
             Console.WriteLine("==================================================");
-            Console.WriteLine($"CALCOLO DELL'IMPOSTA DA VERSARE:");
+            Console.WriteLine("CALCOLO DELL'IMPOSTA DA VERSARE:");
             Console.WriteLine($"Contribuente: {Nome} {Cognome},");
             Console.WriteLine($"Nato il {DataDiNascita.ToString("dd/MM/yyyy")} ({Sesso}),");
             Console.WriteLine($"Residente in {ComuneDiResidenza},");
-            Console.WriteLine($"Codice fiscale: {CodiceFiscale}");
+            Console.WriteLine($"Codice fiscale: {CodiceFiscale.ToUpper()}");
             Console.WriteLine($"Reddito dichiarato: {RedditoAnnuale.ToString("N2")}");
             Console.WriteLine($"IMPOSTA DA VERSARE: $ {Aliquota().ToString("N2")}");
         }
