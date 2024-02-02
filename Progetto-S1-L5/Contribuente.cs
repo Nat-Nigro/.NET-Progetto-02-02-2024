@@ -25,8 +25,9 @@ namespace Progetto_S1_L5
 
         public void Benvenuto() // Primo metodo, inseriamo e stampiamo i dati richiesti
         {
-            // Passiamo alla creazione del portale, (in gran parte da output)
-            Console.WriteLine("INSERISCI I TUOI DATI");
+            // Passiamo alla creazione del portale di benvenuto, tramite input ed output
+            Console.WriteLine("Benvenuto, è tempo di DARCI TUTTI I SOLDI CHE HAI!");
+            Console.WriteLine();
 
             Console.WriteLine("Nome: ");
             Nome = Console.ReadLine();
@@ -46,8 +47,22 @@ namespace Progetto_S1_L5
                 CodiceFiscale = Console.ReadLine();
             }
 
-            Console.WriteLine("Sesso (M/F): ");
-            Sesso = char.Parse(Console.ReadLine());
+            bool inputValido = false;
+            while (!inputValido)
+            {
+                Console.WriteLine("Sesso (M/F): ");
+                string input = Console.ReadLine().ToUpper();
+
+                if (input == "M" || input == "F")
+                {
+                    Sesso = input[0]; // Assegnamo il primo carattere della stringa "input" alla proprietà Sesso
+                    inputValido = true; // Se inserito correttamente, lo stato passa a true ed usciamo dal ciclo
+                }
+                else
+                {
+                    Console.WriteLine("Carattere non valido, riprovare:");
+                }
+            }
 
 
 
@@ -57,16 +72,16 @@ namespace Progetto_S1_L5
             /* In questo caso il ciclo while continuerà fin quando lo stato di inputValido non diventa true.
              Con int.TryParse convertiamo l'input dell'utente e lo stato passerà a true, uscendo quindi dal ciclo
              */
-            bool inputValido = false;
+            bool inputValido2 = false;
             int redditoValido;
 
             Console.WriteLine("Dichiarare il reddito: ");
 
-            while (!inputValido)
+            while (!inputValido2)
             {
                 string input = Console.ReadLine();
 
-                inputValido = int.TryParse(input, out redditoValido);
+                inputValido2 = int.TryParse(input, out redditoValido);
 
                 if (inputValido)
                 {
@@ -115,11 +130,10 @@ namespace Progetto_S1_L5
             Console.WriteLine($"Residente in {ComuneDiResidenza},");
             Console.WriteLine($"Codice fiscale: {CodiceFiscale}");
             Console.WriteLine($"Reddito dichiarato: {RedditoAnnuale.ToString("N2")}");
-            Console.WriteLine($"IMPOSTA DA VERSARE: \u20AC  {Aliquota().ToString("N2")}");
+            Console.WriteLine($"IMPOSTA DA VERSARE: $ {Aliquota().ToString("N2")}");
         }
         /* Con N2 e ToString formattiamo il numero, quindi separazione (migliaia etc.)
-         2 indica le cifre da visualizzare dopo il separatore decimale 
-        \u220AC restituisce il simbolo dell'uero
+         2 indica le cifre da visualizzare dopo il separatore decimale
          */
 
     }
